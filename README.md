@@ -2,9 +2,9 @@
 Etch-A-Sketch Style Draw Pad
 
 Using:
-1.HTML
-2.CSS
-3.Vanilla Javascript
+1. HTML
+2. CSS
+3. Vanilla Javascript
 
 To Practice:
 1. DOM Elements
