@@ -10,14 +10,15 @@
 </head>
 <body>
     <div id='sketcher'>
-        <h1>Sketch Champion</h1>
+        <h1 id='title'>Sketch Champion</h1>
+        <!--<p id='instructions'>set instructions to be a prompt instead of sitting here</p>-->
         <div id='container-with-palette'>
             <div id='palette'>palette
-                <button class='palette-button'></button>
-                <button class='palette-button'></button>
-                <button class='palette-button'></button>
-                <button class='palette-button'></button>
-                <button class='palette-button'></button>
+                <button class='palette-button' palette-color='1'></button>
+                <button class='palette-button' palette-color='2'></button>
+                <button class='palette-button' palette-color='3'></button>
+                <button class='palette-button' palette-color='4'></button>
+                <button class='palette-button' palette-color='5'></button>
 
             </div>
             <div keydd='kehd' id='container' class='grids-container'>
@@ -26,19 +27,22 @@
         </div>
         <div id='settings'>
             Resolution 
-            <button>32x32</button>
-            <button>48x48</button>
-            <button>64x64</button>
-            <button>128x128</button>
+            <button class='resolution-button' resolution=32>16x16</button>
+            <button class='resolution-button' resolution=32>32x32</button>
+            <button class='resolution-button' resolution=48>48x48</button>
+            <button class='resolution-button' resolution=64>64x64</button>
+            <button class='resolution-button' resolution=128>128x128</button>
             Opacity Passes:
             <button>1</button>
             <button>3</button>
             <button>5</button>
             <button>10</button>
             Style:
-            <button>retro</button>
-            <button>psychedelic</button>
-            <button>palette</button>
+            <div id='palette-selectors'>
+            <button class='palette-selector' color='retro'>grey</button>
+            <button class='palette-selector' color='psychedelic'>psychedelic</button>
+            <button class='palette-selector' color='palette'>palette</button>
+            </div>
         </div>
     </div>
     <footer>Coded by Meuwwy using HTML, CSS, and Vanilla JavaScript</footer>
