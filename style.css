@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url(Lobster/Lobster-Regular.ttf);
+}
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #BDBDAA;
+    font-family: 'Lobster', 'Courier New', 'Ariel';
+    justify-content: space-around;
+    height: 90vh;
+}
+footer{
+    justify-content: end;
+    margin-top: 64px;
+    font-family: 'Courier New';
+}
+#sketcher{
+    background-color:#F2F291;
+    padding: 16px;
+    border-radius:16px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+#container-with-palette{
+    display: flex;
+    gap: 48px;
+}
+#palette{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40%;
+    align-self: center;
+}
+#container{
+    display: grid;
+    width: 600px;
+    height: 600px;
+    border-width: 14px;
+    border-style: solid;
+    border-color: #707043;
+}
+.divvy{
+    background-color:#f5f5dc;
+    border-color: azure;
+    border-width: medium;
+}
+.entered{
+    background-color:dimgray;
+}
+.hovered{
+    background-color: rgb(83, 83, 83);
+}
