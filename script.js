@@ -9,6 +9,14 @@ const sketchPad = gridsContainer.querySelectorAll('div');
 //Grid Construction
 let resolution = 16;
 addGrid();
+let brushToggle = true;
+
+window.addEventListener('keypress', function(event){
+    if(event.code=='Space'){
+        brushToggle = !brushToggle;
+    }
+});
+
 function addGrid(){
     container.setAttribute('style',  `grid-template-columns: repeat(${resolution}, auto)`);
     for(let i=0; i<(resolution*resolution); i++){
@@ -17,14 +25,11 @@ function addGrid(){
         document.getElementById('container').appendChild(tempDiv);
     };
     const grids = document.querySelectorAll('.divvy');
-   // grids.forEach(element => {
- //   element.addEventListener('mouseenter', () =>{
-  //      element.classList.add('hovered');
-  //  });
-  //  element.addEventListener('mouseleave', () =>{
-  //      element.classList.replace('hovered', 'entered');
-  //  })
-  //});
+    grids.forEach(element => {
+        element.addEventListener('mouseenter', () =>{
+            if(brushToggle==true){
+            element.style.backgroundColor = paletteColors[0];}}
+        );});
 }
 function  clearGrid(){
     while(container.hasChildNodes()==true){
@@ -48,23 +53,48 @@ let paletteColors= new Array('dimgrey', 'dimgrey', 'dimgrey', 'dimgrey', 'dimgre
 paletteSelections.forEach((button) => {
     button.addEventListener('click', () => {
         let previouslySelectedPalette = paletteColors;
-        switch(button.getAttribute('color')){
-            case 'retro': 
+        switch(button.getAttribute('id')){
+            case 'grey': 
                 paletteColors=['dimgrey', 'dimgrey', 'dimgrey', 'dimgrey', 'dimgrey'];
                 console.log(paletteColors);
                 break;
-            case 'psychedelic':
+            case 'ocean-psychedelic':
                 paletteColors=['#7343D9', '#0B8AD9', '#0B9ED9', '#0CF2F2', '#F2EB80'];
                 console.log(paletteColors);
                 break;
             case 'palette': 
-                paletteColors=['red', 'red', 'red', 'red', 'red'];
+                paletteColors=['#8C030E', '#D9042B', '#EF4BF2', '#F07EF2', '#F24405'];
                 console.log(paletteColors);
                 break;
+            case 'lilac-rose': 
+                paletteColors=['#8C030E', '#D9042B', '#EF4BF2', '#F07EF2', '#F24405'];
+                console.log(paletteColors);
+                break;
+            case 'autumn': 
+                paletteColors=['#252E40', '#F2A922', '#F28322', '#D95525', '#A62C21'];
+                console.log(paletteColors);
+                break;
+            case 'pastel': 
+                paletteColors=['#FF99EB', '#8EFADA', '#B281E3', '#9BA4FA', '#81C4E3'];
+                console.log(paletteColors);
+                break;   
+            case 'forrest': 
+                paletteColors=['#39402C', '#4F592C', '#647330', '#D9D2C5', '#F2F2F2'];
+                console.log(paletteColors);
+                break; 
+            case 'winter': 
+                paletteColors=['#020E26', '#223240', '#54728C', '#A7BDD9', '#595515'];
+                console.log(paletteColors);
+                break;   
+            case 'strawberry': 
+                paletteColors=['#F25E95', '#F2808A', '#F29F80', '#F2CA80', '#F2EA79'];
+                console.log(paletteColors);
+                break;             
             default:
                 paletteColors=['blue','blue','blue','blue','blue'];
         }
         setPaletteButtonBackgroundColor(paletteColors);
+        setSelectedPalette(paletteColors[0]);
         if(previouslySelectedPalette[2]!=paletteColors[2]){
             clearGrid();}
     });
@@ -72,7 +102,8 @@ paletteSelections.forEach((button) => {
 setPaletteButtonBackgroundColor(['dimgrey', 'dimgrey', 'dimgrey', 'dimgrey', 'dimgrey']);
 function setPaletteButtonBackgroundColor(array){
     for(let i=0; i<palettes.length; i++){
-        palettes[i].style.backgroundColor = array[i];
+        palettes[i].style.backgroundColor= array[i] ;
+        //id like to add a slight gradient to give the buttons some texture, but it kinda fucks up setBrushColor()
     }
 };
 palettes.forEach((button) => {
@@ -84,9 +115,22 @@ function setBrushColor(){
     const grids = document.querySelectorAll('.divvy');
     grids.forEach(element => {
         element.addEventListener('mouseenter', () =>{
-            element.style.backgroundColor = color;}
+            if(brushToggle==true){
+            element.style.backgroundColor = color;}}
         );});
+    setSelectedPalette(color);
 }
+
+function setSelectedPalette(color){
+    console.log(color);
+    palettes.forEach((button) => {
+    if(button.style.backgroundColor == color){
+        button.setAttribute('class', 'palette-button highlighted');
+    }else
+    button.setAttribute('class', 'palette-button');
+});
+}
+
 //}
 //1. function to change background color that is drawn
 

@@ -19,11 +19,13 @@ footer{
 #sketcher{
     margin-top: 64px;
     background-color:#F2F291;
-    padding: 16px 128px 48px 16px;
+    padding: 16px 16px 16px 16px;
     border-radius:16px;
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 96px;
+    padding-right: 24px;
 }
 #instructions{
     width: 700px;
@@ -31,22 +33,75 @@ footer{
 }
 #container-with-palette{
     display: flex;
-    gap: 48px;
+    gap: 12px;
     justify-content: center;
+    align-items: center;
+}
+#color-options{
+    display:flex;
+    flex-direction: column;
 }
 #palette{
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     margin-bottom: 10%;
     align-self: center;
-    margin-left: 32px;
+    align-items: center;
 }
 .palette-button{
+    width: 48px;
+    height: 48px;
     padding: 16px;
     border-radius: 8px;
     border-style: solid;
     border-color:#707043;
+}
+#palette-selectors{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.palette-selector{
+    width: 48px; height: 48px;
+    border-style: solid;
+    border-color: #707043;
+    border-radius: 8px;
+}
+#palette-rows{
+    display:flex;
+    gap: 16px;
+}
+.palette-row{
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+#grey{
+    background-color: dimgray;
+}
+#ocean-psychedelic{
+    background-image: linear-gradient(#7343D9, #0B8AD9, #0B9ED9, #0CF2F2, #F2EB80);
+}
+#lilac-rose{
+    background-image: linear-gradient(#8C030E, #D9042B, #EF4BF2, #F07EF2, #F24405)
+}
+#autumn{
+    background-image: linear-gradient(#252E40, #F2A922, #F28322, #D95525, #A62C21)
+}
+#winter{
+    background-image: linear-gradient(#020E26, #223240, #54728C, #A7BDD9, #595515)
+}
+#pastel{
+    background-image: linear-gradient(#FF99EB, #8EFADA, #B281E3)
+    /* #9BA4FA #81C4E3 */
+}
+#forrest{
+    background-image: linear-gradient(#39402C, #4F592C, #647330, #D9D2C5, #F2F2F2)
+}
+#strawberry{
+    background-image: linear-gradient(#F25E95, #F2808A, #F29F80, #F2CA80, #F2EA79)
 }
 #container{
     display: grid;
@@ -54,6 +109,21 @@ footer{
     height: 600px;
     border-width: 14px;
     border-style: solid;
+    border-color: #707043;
+}
+#settings{
+    align-self: center;
+    margin-left: 12px;
+    margin-top: 16px;
+}
+.resolution-button{
+    width: 64px;
+    height: 36px;
+    font-family: 'Lobster';
+    font-size: 16px;
+    background-image: linear-gradient(#707043, #f5f5dc, #f5f5dc, #707043);
+    border-style: solid;
+    border-radius: 8px;
     border-color: #707043;
 }
 .divvy{
@@ -69,4 +139,7 @@ footer{
 }
 .red{
     background-color: red;
+}
+.highlighted{
+    transform: scale(1.3);
 }

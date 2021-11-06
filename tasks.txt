@@ -1,0 +1,7 @@
+1. Add a palette button highlight----
+2. Add a brush on/brush off function-----
+add display if drawing is on or off(maybe change mouse)
+3. Add "clear grid are you sure" prompt
+4. set up palette buttons to come in based on how many colors there actually are
+
+Once I kind of set up everything I want to do, I want to step back, understand and write the pseudo-code, and completely rewrite the script in a way that makes way more sense.
