@@ -1,6 +1,10 @@
 # etch-a-sketch
 Etch-A-Sketch Style Draw Pad
 
+
+<a href="https://muewwy.github.io/etch-a-sketch/">Live Demo</a>
+
+
 Using:
 1. HTML
 2. CSS
