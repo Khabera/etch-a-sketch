@@ -2,7 +2,7 @@
 Etch-A-Sketch Style Draw Pad
 
 
-<a href="https://muewwy.github.io/etch-a-sketch/">Live Demo</a>
+<a href="https://khabera.github.io/etch-a-sketch/">Live Demo</a>
 
 
 Using:
