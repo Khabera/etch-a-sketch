@@ -3,5 +3,7 @@
 add display if drawing is on or off(maybe change mouse)
 3. Add "clear grid are you sure" prompt
 4. set up palette buttons to come in based on how many colors there actually are
+5. set up script to change brush based on resolution
+6. set up to only run mouseover once and not continuously.
 
 Once I kind of set up everything I want to do, I want to step back, understand and write the pseudo-code, and completely rewrite the script in a way that makes way more sense.

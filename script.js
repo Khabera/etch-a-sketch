@@ -22,6 +22,8 @@ function addGrid(){
     for(let i=0; i<(resolution*resolution); i++){
         let tempDiv = document.createElement("DIV");
         tempDiv.setAttribute('class', 'divvy');
+        tempDiv.setAttribute('id', `${i}`);
+        tempDiv.style.opacity=1;
         document.getElementById('container').appendChild(tempDiv);
     };
     const grids = document.querySelectorAll('.divvy');
@@ -56,45 +58,37 @@ paletteSelections.forEach((button) => {
         switch(button.getAttribute('id')){
             case 'grey': 
                 paletteColors=['dimgrey', 'dimgrey', 'dimgrey', 'dimgrey', 'dimgrey'];
-                console.log(paletteColors);
                 break;
             case 'ocean-psychedelic':
                 paletteColors=['#7343D9', '#0B8AD9', '#0B9ED9', '#0CF2F2', '#F2EB80'];
-                console.log(paletteColors);
                 break;
             case 'palette': 
                 paletteColors=['#8C030E', '#D9042B', '#EF4BF2', '#F07EF2', '#F24405'];
-                console.log(paletteColors);
                 break;
             case 'lilac-rose': 
                 paletteColors=['#8C030E', '#D9042B', '#EF4BF2', '#F07EF2', '#F24405'];
-                console.log(paletteColors);
                 break;
             case 'autumn': 
                 paletteColors=['#252E40', '#F2A922', '#F28322', '#D95525', '#A62C21'];
-                console.log(paletteColors);
                 break;
             case 'pastel': 
                 paletteColors=['#FF99EB', '#8EFADA', '#B281E3', '#9BA4FA', '#81C4E3'];
-                console.log(paletteColors);
                 break;   
             case 'forrest': 
                 paletteColors=['#39402C', '#4F592C', '#647330', '#D9D2C5', '#F2F2F2'];
-                console.log(paletteColors);
                 break; 
             case 'winter': 
                 paletteColors=['#020E26', '#223240', '#54728C', '#A7BDD9', '#595515'];
-                console.log(paletteColors);
                 break;   
             case 'strawberry': 
                 paletteColors=['#F25E95', '#F2808A', '#F29F80', '#F2CA80', '#F2EA79'];
-                console.log(paletteColors);
                 break;             
             default:
                 paletteColors=['blue','blue','blue','blue','blue'];
         }
         setPaletteButtonBackgroundColor(paletteColors);
-        setSelectedPalette(paletteColors[0]);
+        setSelectedPalette('clear');
+        palettes[0].classList.add('highlighted');
         if(previouslySelectedPalette[2]!=paletteColors[2]){
             clearGrid();}
     });
@@ -116,18 +110,64 @@ function setBrushColor(){
     grids.forEach(element => {
         element.addEventListener('mouseenter', () =>{
             if(brushToggle==true){
-            element.style.backgroundColor = color;}}
+            element.style.backgroundColor = color;
+            element.style.opacity = 1;
+            let num = parseInt(element.getAttribute('id'));
+            if(resolution==48){
+            changeColor(document.getElementById(num-1), color);
+            changeColor(document.getElementById(num+1), color);
+            changeColor(document.getElementById(num-resolution), color);
+            changeColor(document.getElementById(num+parseInt(resolution)), color);
+            }else if(resolution==64){
+            changeColor(document.getElementById(num-1), color);
+            changeColor(document.getElementById(num+1), color);
+            changeColor(document.getElementById(num+2), color);
+            changeColor(document.getElementById(num-2), color);
+            changeColor(document.getElementById(num-resolution), color);
+            changeColor(document.getElementById(num+parseInt(resolution)), color);
+            changeColor(document.getElementById(num+parseInt(resolution)+1), color);
+            changeColor(document.getElementById(num+parseInt(resolution)-1), color);
+            changeColor(document.getElementById(num-parseInt(resolution)+1), color);
+            changeColor(document.getElementById(num-parseInt(resolution)-1), color);
+            changeColor(document.getElementById(num+(parseInt(resolution)*2)), color);
+            changeColor(document.getElementById(num-(parseInt(resolution)*2)), color);
+            
+            }
+            //change all this to a function
+            //let prev = document.getElementById(num-1);
+            //prev.style.backgroundColor=color;
+           // let next = document.getElementById((num+1));
+           // next.style.backgroundColor=color;
+           // let above = document.getElementById((num-16));
+           // above.style.backgroundColor=color;
+            //console.log(prev.style.opacity);
+
+
+
+            }}
         );});
     setSelectedPalette(color);
 }
-
+function changeColor(element, color){
+    element.style.backgroundColor = color;
+    if(element.style.opacity == 0){
+        element.style.opacity = 0.3;}
+    else if(element.style.opacity == 0.3){
+        element.style.opacity = 0.6;
+    }else if(element.style.opacity == 0.6){
+        element.style.opacity = 1;
+    }
+}
+palettes[0].classList.add('highlighted');
 function setSelectedPalette(color){
-    console.log(color);
+    let one = false;
     palettes.forEach((button) => {
-    if(button.style.backgroundColor == color){
+    if(button.style.backgroundColor == color && one == false){
         button.setAttribute('class', 'palette-button highlighted');
-    }else
+        one = true;
+    }else{
     button.setAttribute('class', 'palette-button');
+    }
 });
 }
 
